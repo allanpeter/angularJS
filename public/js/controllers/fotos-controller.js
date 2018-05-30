@@ -12,4 +12,15 @@ angular.module('alurapic').controller('FotosController', function($scope, $http)
 		console.log(erro);
 	});
 
+	$scope.remover = function(foto){
+		$http.delete('v1/fotos/'+ foto._id)
+		.success(function(){
+			console.log('Foto' + foto.titulo + 'foi removida com sucesso');
+		})
+		.error(function(erro){
+			console.log(erro);
+			console.log('Não foi possivel remover a foto'+ foto.titulo);
+		})
+	}
+
 });
